@@ -1,17 +1,25 @@
 package com.pokemon.app.entities;
 
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@javax.persistence.Entity
-public class pokemonDetails {
-	
-	@javax.persistence.Id
-	@javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.SEQUENCE)
+public class PokemonExtensiveDetails {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	
 	private String name;
@@ -26,4 +34,8 @@ public class pokemonDetails {
 	private int speed;
 	private String generation;
 	private String legendary;
+	
+	@OneToMany
+	List<PokemonImagesDataset> pokemonImageSetDetails;
+	
 }
