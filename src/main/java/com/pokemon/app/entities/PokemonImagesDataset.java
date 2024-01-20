@@ -9,7 +9,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,10 +19,11 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 import lombok.experimental.Tolerate;
 
-@Entity
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity
 public class PokemonImagesDataset {
 	
 	@Id
@@ -35,8 +38,12 @@ public class PokemonImagesDataset {
 	private byte[] pokemonImage;
 	
 	@ManyToOne
+	@JsonIgnore
+	@ToString.Exclude
 	PokemonExtensiveDetails pokemonExtensiveDetails;
 	
 	@ManyToOne
+	@JsonIgnore
+	@ToString.Exclude
 	PokemonDetails pokemonDetails;
 }
